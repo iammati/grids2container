@@ -1,0 +1,5 @@
+styles.templates {
+   templateRootPath = EXT:site_grids2container/Resources/Private/Templates/
+   partialRootPath = EXT:site_grids2container/Resources/Private/Partials/
+   layoutRootPath = EXT:site_grids2container/Resources/Private/Layouts/
+}

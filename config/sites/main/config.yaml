@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-base: '%env(PROTOCOL_SCHEME)%://%env(BASE_DOMAIN)%/'
-=======
 base: 'https://grids2container.ddev.site/'
->>>>>>> master
 errorHandling: {  }
 languages:
   -

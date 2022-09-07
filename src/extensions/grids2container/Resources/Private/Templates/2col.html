@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <f:for each="{children.1.401}" as="record" iteration="i">
+                <v:content.render contentUids="{0: record.data.uid}"/>
+            </f:for>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <f:for each="{children.1.402}" as="record" iteration="i">
+                <v:content.render contentUids="{0: record.data.uid}"/>
+            </f:for>
+        </div>
+    </div>
+</div>

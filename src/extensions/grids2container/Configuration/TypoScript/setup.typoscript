@@ -1,9 +1,1 @@
-// use default/general ContainerProcessor
-tt_content.b13-2cols-with-header-container < lib.contentElement
-tt_content.b13-2cols-with-header-container {
-  templateName = 2ColsWithHeader
-  templateRootPaths.10 = EXT:container_example/Resources/Private/Templates
-  dataProcessing {
-    200 = B13\Container\DataProcessing\ContainerProcessor
-  }
-}
+@import 'EXT:site_grids2container/Configuration/TypoScript/*col.typoscript'

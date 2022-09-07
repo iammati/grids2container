@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <f:for each="{children_401}" as="record" iteration="i">
+                {record.renderedContent -> f:format.raw()}
+            </f:for>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <f:for each="{children_402}" as="record" iteration="i">
+                {record.renderedContent -> f:format.raw()}
+            </f:for>
+        </div>
+    </div>
+</div>
