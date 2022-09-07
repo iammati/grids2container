@@ -1,0 +1,47 @@
+{
+    "name": "iammati/grids2container-project",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Mati Sediqi",
+            "email": "m.sediqi@schommer-media.de",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": "^8",
+        "b13/container": "^2.0",
+        "gridelementsteam/gridelements": "dev-master",
+        "site/site-grids2container": "^0.1",
+        "typo3/cms-backend": "^11.5",
+        "typo3/cms-core": "^11.5",
+        "typo3/cms-extbase": "^11.5",
+        "typo3/cms-extensionmanager": "^11.5",
+        "typo3/cms-filelist": "^11.5",
+        "typo3/cms-fluid": "^11.5",
+        "typo3/cms-frontend": "^11.5",
+        "typo3/cms-install": "^11.5",
+        "typo3/cms-lowlevel": "^11.5",
+        "typo3/cms-recordlist": "^11.5"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./src/extensions/*"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true,
+            "ergebnis/composer-normalize": false,
+            "helhum/dotenv-connector": false
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php -r \"file_exists('.env') || copy('.env.dist', '.env');\""
+        ]
+    }
+}

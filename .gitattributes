@@ -1,0 +1,20 @@
+# Everything in the commands directory needs LF line-endings.
+# Not CRLF as from Windows – enforce checkout with linux lf consistent over all platforms.
+*.css text eol=lf
+*.diff text eol=lf
+*.html text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.patch text eol=lf
+*.php text eol=lf
+*.scss text eol=lf
+*.sh text eol=lf
+*.sql text eol=lf
+*.svg text eol=lf
+*.ts text eol=lf
+*.txt text eol=lf
+*.typoscript text eol=lf
+*.xlf text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf

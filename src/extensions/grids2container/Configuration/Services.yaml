@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Site\Grids2container\:
+    resource: '../Classes/*'
+
+  Site\Grids2container\Command\MigrateCommand:
+    tags:
+      - name: 'console.command'
+        command: 'site-grids2container:migrate'
+        description: 'Migrates old GridElements to container from b13. 😗'
+        schedulable: false
