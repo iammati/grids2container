@@ -1,0 +1,27 @@
+{
+    "name": "site/site-grids2container",
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0-or-later",
+    "version": "0.1.0",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Mati",
+            "email": "m.sediqi@schommer-media.de",
+            "role": "Developer"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Site\\Grids2container\\": "Classes"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "site_grids2container"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Site\Grids2container\:
+    resource: '../Classes/*'
+
+  Site\Grids2container\Command\Grids2containerMigration:
+    tags:
+      - name: 'console.command'
+        command: 'grids2container:migration'
+        description: 'Migrating all GridElements to containers.'
