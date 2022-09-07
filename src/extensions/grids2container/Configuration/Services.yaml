@@ -7,9 +7,8 @@ services:
   Site\Grids2container\:
     resource: '../Classes/*'
 
-  Site\Grids2container\Command\MigrateCommand:
+  Site\Grids2container\Command\Grids2containerMigration:
     tags:
       - name: 'console.command'
-        command: 'site-grids2container:migrate'
-        description: 'Migrates old GridElements to container from b13. 😗'
-        schedulable: false
+        command: 'grids2container:migration'
+        description: 'Migrating all GridElements to containers.'

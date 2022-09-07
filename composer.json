@@ -11,6 +11,7 @@
     "require": {
         "php": "^8",
         "b13/container": "^2.0",
+        "b13/typo3-config": "^0.1.5",
         "gridelementsteam/gridelements": "dev-master",
         "site/site-grids2container": "^0.1",
         "typo3/cms-backend": "^11.5",
@@ -34,9 +35,7 @@
         "sort-packages": true,
         "allow-plugins": {
             "typo3/class-alias-loader": true,
-            "typo3/cms-composer-installers": true,
-            "ergebnis/composer-normalize": false,
-            "helhum/dotenv-connector": false
+            "typo3/cms-composer-installers": true
         }
     },
     "scripts": {

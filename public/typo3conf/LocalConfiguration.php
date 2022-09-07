@@ -13,17 +13,8 @@ return [
     'DB' => [
         'Connections' => [
             'Default' => [
-                'charset' => 'utf8mb4',
-                'dbname' => 'db',
+                'charset' => 'utf8',
                 'driver' => 'mysqli',
-                'host' => 'db',
-                'password' => 'db',
-                'port' => 3306,
-                'tableoptions' => [
-                    'charset' => 'utf8mb4',
-                    'collate' => 'utf8mb4_unicode_ci',
-                ],
-                'user' => 'db',
             ],
         ],
     ],
@@ -66,7 +57,6 @@ return [
             'pdf_mode' => '20',
             'pdftools' => '/usr/bin/',
             'ppthtml' => '/usr/bin/',
-            'trackIpInStatistic' => '2',
             'unrtf' => '/usr/bin/',
             'unzip' => '/usr/bin/',
             'useCrawlerForExternalFiles' => '0',
@@ -150,13 +140,11 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '*',
-        'displayErrors' => 1,
-        'encryptionKey' => '6e78676b7099679fc8605bedecdd6a835b9aaef9355587ab585ada20c15a3b77ce328233cd75469eec26e367a68bd88c',
-        'exceptionalErrors' => 12290,
+        'devIPmask' => '',
+        'displayErrors' => 0,
+        'encryptionKey' => '3859bff0095a65ebd7294e344e3eb3764fb6d8c61cb7107db60ab6472c53c701df54537aff9c5d9aef2c865a3c59f9d7',
+        'exceptionalErrors' => 4096,
         'features' => [
-            'felogin.extbase' => true,
-            'fluidBasedPageModule' => true,
             'rearrangedRedirectMiddlewares' => true,
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
@@ -165,6 +153,5 @@ return [
         'systemMaintainers' => [
             1,
         ],
-        'trustedHostsPattern' => '.*',
     ],
 ];

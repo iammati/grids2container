@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6627001c2e43f73931f2a6e5bfda1eb3",
+    "content-hash": "cf16a896ee04026ff594ea1600ec2a9d",
     "packages": [
         {
             "name": "b13/container",
@@ -69,6 +69,44 @@
                 "source": "https://github.com/b13/container/tree/2.0.2"
             },
             "time": "2022-08-30T09:12:29+00:00"
+        },
+        {
+            "name": "b13/typo3-config",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/b13/typo3-config.git",
+                "reference": "963d4c792c4deb63203c58728f9c8c9672e54456"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/b13/typo3-config/zipball/963d4c792c4deb63203c58728f9c8c9672e54456",
+                "reference": "963d4c792c4deb63203c58728f9c8c9672e54456",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ~8.0",
+                "typo3/cms-core": "^9.5.14 || ^10.0.0 || ^11.0.0"
+            },
+            "require-dev": {
+                "typo3/coding-standards": "^0.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Fluent API to set environment-specific configuration for TYPO3",
+            "support": {
+                "issues": "https://github.com/b13/typo3-config/issues",
+                "source": "https://github.com/b13/typo3-config/tree/0.1.5"
+            },
+            "time": "2021-11-25T13:11:26+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
