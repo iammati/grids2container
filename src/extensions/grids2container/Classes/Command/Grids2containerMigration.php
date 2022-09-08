@@ -17,6 +17,8 @@ use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Core\Environment;
 
 final class Grids2containerMigration extends Command
 {
@@ -56,7 +58,7 @@ final class Grids2containerMigration extends Command
             $io->title($this->getDescription());
         }
 
-        $pids = $this->getQueryBuilder(new: true)
+        $pids = $this->getQueryBuilder('tt_content', true)
             ->select('uid')
             ->from('pages')
             ->where(
@@ -68,11 +70,11 @@ final class Grids2containerMigration extends Command
         foreach ($pids as $page) {
             $pid = (int)$page['uid'];
 
-            $grids = $this->getQueryBuilder(new: true)
+            $grids = $this->getQueryBuilder('tt_content', true)
                 ->select('uid', 'tx_gridelements_backend_layout')
                 ->from('tt_content')
                 ->where(
-                    $this->qb->expr()->eq('uid', (int)$pid, \PDO::PARAM_INT),
+                    $this->qb->expr()->eq('pid', (int)$pid, \PDO::PARAM_INT),
                     $this->qb->expr()->eq('CType', $this->qb->createNamedParameter('gridelements_pi1'), \PDO::PARAM_STR),
                 )
                 ->execute()
@@ -104,27 +106,32 @@ final class Grids2containerMigration extends Command
                         GeneralUtility::makeInstance(PackageManager::class)
                     ))->withPrefix('tca_base')->toString();
 
-                    unlink("/var/www/html/var/cache/code/core/{$tcaStaticFileCacheName}.php");
+                    $cachedTcaFilepath = "/var/www/html/var/cache/code/core/{$tcaStaticFileCacheName}.php";
 
-                    $this->generateByGridElementTSconf($setup);
+                    if (file_exists($cachedTcaFilepath)) {
+                        unlink($cachedTcaFilepath);
+                    }
+
+                    foreach ($setup as $key => $cfg) {
+                        $this->generateByGridElementTSconf([$key => $cfg]);
+                    }
 
                     ExtensionManagementUtility::loadBaseTca();
                     $containerGrid = $this->registry->getGrid($CType);
                 }
 
-                $this->getQueryBuilder(new: true)
+                $this->getQueryBuilder('tt_content', true)
                     ->update('tt_content')
                     ->where(
                         $this->qb->expr()->eq('uid', $grid['uid'])
                     )
                     ->set('CType', $CType)
-                    ->executeStatement();
+                    ->execute();
 
-                $records = $this->getQueryBuilder(new: true)
+                $records = $this->getQueryBuilder('tt_content', true)
                     ->select('uid', 'tx_gridelements_columns')
                     ->from('tt_content')
                     ->where(
-                        $this->qb->expr()->eq('deleted', 0, \PDO::PARAM_INT),
                         $this->qb->expr()->eq('pid', $pid, \PDO::PARAM_INT),
                         $this->qb->expr()->eq('tx_container_parent', 0, \PDO::PARAM_INT),
                         $this->qb->expr()->eq('tx_gridelements_container', $grid['uid'], \PDO::PARAM_INT),
@@ -140,7 +147,7 @@ final class Grids2containerMigration extends Command
                 foreach ($records as $record) {
                     $colPos = (int)$record['tx_gridelements_columns'];
 
-                    $this->getQueryBuilder(new: true)
+                    $this->getQueryBuilder('tt_content', true)
                         ->update('tt_content')
                         ->where(
                             $this->qb->expr()->eq('uid', $record['uid'], \PDO::PARAM_INT),
@@ -148,7 +155,7 @@ final class Grids2containerMigration extends Command
                         )
                         ->set('tx_container_parent', (int)$grid['uid'])
                         ->set('colPos', (int)$colPos)
-                        ->executeStatement();
+                        ->execute();
 
                     $counter['childs']++;
                 }
@@ -183,12 +190,12 @@ final class Grids2containerMigration extends Command
         $gridCfg = '';
         $typoScriptCfg = '';
 
-        foreach ($rows as $row) {
+        foreach ($rows as $r => $row) {
             $gridCfg .= <<<EOT
             [
             EOT;
 
-            foreach ($row['columns'] as $column) {
+            foreach ($row['columns'] as $c => $column) {
                 $gridCfg .= <<<EOT
                 ['name' => '{$column['name']}', 'colPos' => {$column['colPos']}],
                 EOT;
@@ -246,5 +253,15 @@ final class Grids2containerMigration extends Command
         EOT);
 
         fclose($stream);
+    }
+
+    /**
+     * Cache identifier of base TCA cache entry.
+     *
+     * @return string
+     */
+    protected static function getBaseTcaCacheIdentifier()
+    {
+        return 'tca_base_' . sha1((string)(new Typo3Version()) . Environment::getProjectPath() . 'tca_code' . serialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['runtimeActivatedPackages']));
     }
 }

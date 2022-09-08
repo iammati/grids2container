@@ -119,8 +119,17 @@ return [
         'container' => [
             'packagePath' => 'typo3conf/ext/container/',
         ],
+        'container_example' => [
+            'packagePath' => 'typo3conf/ext/container_example/',
+        ],
         'gridelements' => [
             'packagePath' => 'typo3conf/ext/gridelements/',
+        ],
+        'site_grids2container' => [
+            'packagePath' => 'typo3conf/ext/site_grids2container/',
+        ],
+        'vhs' => [
+            'packagePath' => 'typo3conf/ext/vhs/',
         ],
     ],
     'version' => 5,

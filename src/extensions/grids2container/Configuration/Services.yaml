@@ -10,5 +10,5 @@ services:
   Site\Grids2container\Command\Grids2containerMigration:
     tags:
       - name: 'console.command'
-        command: 'grids2container:migration'
+        command: 'grids2container:migrate'
         description: 'Migrating all GridElements to containers.'

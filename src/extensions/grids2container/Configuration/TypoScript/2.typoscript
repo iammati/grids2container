@@ -1,0 +1,12 @@
+tt_content.2 < lib.contentElement
+tt_content.2 {
+    templateName = 2
+    templateRootPaths.10 = EXT:site_grids2container/Resources/Private/Templates/Containers
+    dataProcessing {
+        20 = B13\Container\DataProcessing\ContainerProcessor
+20 {
+    colPos = 20
+    as = children_20
+}
+    }
+}

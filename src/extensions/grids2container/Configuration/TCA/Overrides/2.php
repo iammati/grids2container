@@ -7,11 +7,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 call_user_func(static function () {
     (GeneralUtility::makeInstance(Registry::class))->configureContainer(
         (new ContainerConfiguration(
-            '2col',
+            '2',
             '',
             'Some Description of the Container',
             [
-                [['name' => 'Links', 'colPos' => 401],['name' => 'Rechts', 'colPos' => 402],],
+                [['name' => 'TwoColumn (left)', 'colPos' => 10],['name' => 'TwoColumn (right)', 'colPos' => 20],],
 
             ],
         ))
